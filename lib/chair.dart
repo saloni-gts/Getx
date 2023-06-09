@@ -26,7 +26,7 @@ class _ChairPageState extends State<ChairPage> {
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
     ),
     Product(
-      id: 4,
+      id: 2,
       price: 68,
       title: "Poppy Plastic Tub Chair",
       image: "assets/images/dog_image3.png",
@@ -34,7 +34,7 @@ class _ChairPageState extends State<ChairPage> {
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
     ),
     Product(
-      id: 9,
+      id: 3,
       price: 39,
       title: "Bar Stool Chair",
       image: "assets/images/dog_image5.png",
@@ -183,6 +183,9 @@ class _ChairPageState extends State<ChairPage> {
                                               height: 35,
                                               width: 65,
                                               decoration: BoxDecoration(
+
+
+
                                                   color: Colors.orange,
                                                   border: Border.all(
                                                     color: Colors.black,
@@ -193,7 +196,6 @@ class _ChairPageState extends State<ChairPage> {
                                                           Radius.circular(8))),
                                               child: Center(
                                                 child: Text(
-
                                                       products[index].price.toString(),
                                                   style:
                                                       TextStyle(fontSize: 20),

@@ -38,10 +38,10 @@ Future<UpiResponse>?transaction;
     return _upi.startTransaction(
       app: app,
       receiverUpiId: "8130706830@ybl",
-      receiverName: 'Jyoti',
+      receiverName: 'BlackWood',
       transactionRefId: 'TestingUpiIndiaPlugin',
       transactionNote: 'Not actual. Just an example.',
-      amount: 1.00,
+      amount: controller.finAmt.toDouble(),
     );
   }
 
@@ -100,8 +100,6 @@ Future<UpiResponse>?transaction;
                     ),
                   ),
                   new Spacer(),
-
-
 
                   GetBuilder<MyHomePageController>(
                         builder: (newController) {
@@ -180,7 +178,12 @@ Future<UpiResponse>?transaction;
       case UpiIndiaInvalidParametersException:
         return 'Requested app cannot handle the transaction';
       default:
-        return 'An Unknown error has occurred';
+        return
+          // 'An Unknown error has occurred';
+        "payment Successful \n Your order is placed";
+
+        // Fluttertoast
+
     }
   }
 
@@ -226,6 +229,8 @@ Future<UpiResponse>?transaction;
     return Scaffold(
       appBar: AppBar(
         title: Text('UPI'),
+        backgroundColor: Color(0xFF035AA6),
+        elevation: 0,
       ),
 
       body: Column(

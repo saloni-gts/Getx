@@ -4,13 +4,11 @@ import 'package:getx/upiPayment.dart';
 import 'addresspage.dart';
 import 'cartPage.dart';
 
-Widget CartButton({required String text , required double width,required BuildContext context}){
+Widget CartButton({required String text , required double width,required BuildContext context,required VoidCallback tap1} ){
   return InkWell(
     onTap: (){
-      // Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage()));
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-      // Navigator.push(context, MaterialPageRoute(builder: (context)=>UpiPayment()));
-    //
+
+    tap1();
     },
     child: Container(
 width: width ,
@@ -25,7 +23,7 @@ width: width ,
       // backgroundColor: Color(0xFFFFA41B),
         child: Center(
           child: Text(
-            "Place Order",
+           text,
               style: TextStyle(color: Colors.black,fontSize: 20)
           ),
         )

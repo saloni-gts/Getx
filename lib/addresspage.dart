@@ -98,153 +98,158 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: Container(
-          // color: Colors.amberAccent,
+      body: GestureDetector(
+        onTap: (){
+          FocusScope.of(context).unfocus();
+        },
+        child: Container(
+            // color: Colors.amberAccent,
 
-          height: MediaQuery.of(context).size.height*.65,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40.0),
-                bottomRight: Radius.circular(40.0),
-              )),
+            height: MediaQuery.of(context).size.height*.65,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40.0),
+                  bottomRight: Radius.circular(40.0),
+                )),
 
 
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          // height: 450,
-          child: Column(
-            children: [
-              SizedBox(
-                height: 10,
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            // height: 450,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
 
-              Text("Fill up the delivery details",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontFamily: "assets/fonts/Poppins-Bold.ttf",
-              ),
-              ),
+                Text("Fill up the delivery details",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontFamily: "assets/fonts/Poppins-Bold.ttf",
+                ),
+                ),
 
 SizedBox(
   height: 15,
 ),
-              ///Adding CSC Picker Widget in app
-              CSCPicker(
+                ///Adding CSC Picker Widget in app
+                CSCPicker(
 
-                // disableCountry: true,
-                disableCountry: true,
-                defaultCountry:CscCountry.India,
-                ///Enable disable state dropdown [OPTIONAL PARAMETER]
-                showStates: true,
+                  // disableCountry: true,
+                  disableCountry: true,
+                  defaultCountry:CscCountry.India,
+                  ///Enable disable state dropdown [OPTIONAL PARAMETER]
+                  showStates: true,
 
-                /// Enable disable city drop down [OPTIONAL PARAMETER]
-                showCities: true,
+                  /// Enable disable city drop down [OPTIONAL PARAMETER]
+                  showCities: true,
 
-                ///Enable (get flat with country name) / Disable (Disable flag) / ShowInDropdownOnly (display flag in dropdown only) [OPTIONAL PARAMETER]
-                flagState: CountryFlag.SHOW_IN_DROP_DOWN_ONLY,
+                  ///Enable (get flat with country name) / Disable (Disable flag) / ShowInDropdownOnly (display flag in dropdown only) [OPTIONAL PARAMETER]
+                  flagState: CountryFlag.SHOW_IN_DROP_DOWN_ONLY,
 
-                ///Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER] (USE with disabledDropdownDecoration)
-                dropdownDecoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    color: Colors.white,
-                    border: Border.all(color: Colors.black, width: 1)),
+                  ///Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER] (USE with disabledDropdownDecoration)
+                  dropdownDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black, width: 1)),
 
-                ///Disabled Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER]  (USE with disabled dropdownDecoration)
-                disabledDropdownDecoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    color: Colors.grey.shade300,
-                    border:
-                        Border.all(color: Colors.grey.shade300, width: 1)),
+                  ///Disabled Dropdown box decoration to style your dropdown selector [OPTIONAL PARAMETER]  (USE with disabled dropdownDecoration)
+                  disabledDropdownDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      color: Colors.grey.shade300,
+                      border:
+                          Border.all(color: Colors.grey.shade300, width: 1)),
 
-                ///selected item style [OPTIONAL PARAMETER]
-                selectedItemStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                ),
-
-                ///DropdownDialog Heading style [OPTIONAL PARAMETER]
-                dropdownHeadingStyle: TextStyle(
+                  ///selected item style [OPTIONAL PARAMETER]
+                  selectedItemStyle: TextStyle(
                     color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 14,
+                  ),
 
-                ///DropdownDialog Item style [OPTIONAL PARAMETER]
-                dropdownItemStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                ),
+                  ///DropdownDialog Heading style [OPTIONAL PARAMETER]
+                  dropdownHeadingStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold),
 
-                ///Dialog box radius [OPTIONAL PARAMETER]
-                dropdownDialogRadius: 10.0,
+                  ///DropdownDialog Item style [OPTIONAL PARAMETER]
+                  dropdownItemStyle: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                  ),
 
-                ///Search bar radius [OPTIONAL PARAMETER]
-                searchBarRadius: 10.0,
+                  ///Dialog box radius [OPTIONAL PARAMETER]
+                  dropdownDialogRadius: 10.0,
 
-                ///triggers once country selected in dropdown
-                onCountryChanged: (value) {
-                  setState(() {
-                    print("value====${value}");
-                    ///store value in country variable
-                    countryValue = value;
-                  });
-                },
+                  ///Search bar radius [OPTIONAL PARAMETER]
+                  searchBarRadius: 10.0,
 
-
-
-                onStateChanged: (value) {
-                  setState(() {
-                    stateValue = value ?? "";
-                  });
-                },
-
-                onCityChanged: (value) {
-                  setState(() {
-                    ///store value in city variable
-                    cityValue = value ?? "";
-                  });
-                },
-              ),
-
-              ///print newly selected country state and city in Text Widget
-              TextButton(
-                  onPressed: () {
+                  ///triggers once country selected in dropdown
+                  onCountryChanged: (value) {
                     setState(() {
-                      print("stateValuestateValue===${stateValue}");
-                      address = "$cityValue, $stateValue, $countryValue";
+                      print("value====${value}");
+                      ///store value in country variable
+                      countryValue = value;
                     });
                   },
-                  child: Text("Print Data")),
-              Text(address),
-
-              SizedBox(
-                height: 20,
-              ),
-
-              // Text("hello"),
-
-              TextField(
-                  controller: addressCntroler,
-                  minLines: 1,
-                  maxLines: 5,
-
-                  decoration: InputDecoration(
-                    hintText: "Enter Your Address...",
-                    hintStyle: TextStyle(
-                      color: Colors.black,
-                      // fontStyle: FontStyle.italic,
-                    ),
-                    border: new OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black)),
-                  )),
-
-              SizedBox(
-                height: 10,
-              ),
 
 
-            ],
-          )),
+
+                  onStateChanged: (value) {
+                    setState(() {
+                      stateValue = value ?? "";
+                    });
+                  },
+
+                  onCityChanged: (value) {
+                    setState(() {
+                      ///store value in city variable
+                      cityValue = value ?? "";
+                    });
+                  },
+                ),
+
+                ///print newly selected country state and city in Text Widget
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        print("stateValuestateValue===${stateValue}");
+                        address = "$cityValue, $stateValue, $countryValue";
+                      });
+                    },
+                    child: Text("Print Data")),
+                Text(address),
+
+                SizedBox(
+                  height: 20,
+                ),
+
+                // Text("hello"),
+
+                TextField(
+                    controller: addressCntroler,
+                    minLines: 1,
+                    maxLines: 5,
+
+                    decoration: InputDecoration(
+                      hintText: "Enter Your Address...",
+                      hintStyle: TextStyle(
+                        color: Colors.black,
+                        // fontStyle: FontStyle.italic,
+                      ),
+                      border: new OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black)),
+                    )),
+
+                SizedBox(
+                  height: 10,
+                ),
+
+
+              ],
+            )),
+      ),
     );
   }
 }

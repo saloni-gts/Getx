@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:getx/splash.dart';
 
 import 'dashboard.dart';
 import 'firstScreen.dart';
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home:DashBoardMain()
+      home:
+      SplashScreen()
+      // DashBoardMain()
       //DashBoard(),
     );
   }

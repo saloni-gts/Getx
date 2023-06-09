@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:getx/product.dart';
 
@@ -7,9 +9,8 @@ import 'cartPage.dart';
 import 'getController.dart';
 
 class PreviewScreen extends StatefulWidget {
-  PreviewScreen({
-    Key? key,
-  }) : super(key: key);
+  bool frmCart;
+  PreviewScreen({Key? key,this.frmCart=false}) : super(key: key);
   @override
   State<PreviewScreen> createState() => _PreviewScreenState();
 }
@@ -24,19 +25,42 @@ class _PreviewScreenState extends State<PreviewScreen> {
     return Scaffold(
       backgroundColor:Color(0xFF035AA6),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: Padding(
+      floatingActionButton:
+      widget.frmCart?SizedBox():
+      Padding(
         padding: const EdgeInsets.only(bottom: 15.0),
         child:InkWell(
           onTap: (){
 
-            // Navigator.push(context, MaterialPageRoute(builder: (context)=>CartPage()));
        controller.setCart();
             print("tap tap");
           },
-          child: CartButton(
-            context: context,
-            text: "Added To Cart",
-            width: 128
+          child: GetBuilder<MyHomePageController>(
+            builder: (controller) {
+              return CartButton(
+                context: context,
+                text:  controller.cartList.contains(controller.selectedProd)?"Remove from cart": "Add to cart",
+                width: controller.cartList.contains(controller.selectedProd)?180:130,
+                tap1: (){
+                  controller.cartList.contains(controller.selectedProd)?
+                  controller.removeFromCart(controller.selectedProd!)
+                      :
+                  controller.addToCart(controller.selectedProd!);
+
+                  // EasyLoading.showToast()
+
+                  Fluttertoast.showToast(
+                      msg:   controller.cartList.contains(controller.selectedProd)
+                          ? "Added to cart successfully":"removed from cart successfully",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      fontSize: 16.0
+                  );
+                }
+
+              );
+            }
           ),
         )
         // FloatingActionButton(

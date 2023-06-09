@@ -7,7 +7,7 @@ class MyHomePageController extends GetxController {
 
   List<Product> cartList=[];
 
-  addToList(Product val){
+  addToCart(Product val){
     cartList.add(val);
     print("cartList==${cartList.length}");
     update();
@@ -18,8 +18,7 @@ class MyHomePageController extends GetxController {
           cartList.remove(cartList[i]);
       }
     }
-
-
+    update();
   }
 
 
@@ -63,5 +62,25 @@ setCkhButton(){
   }
 
 List lst=["item1","item2","item3","item4","item5","item6","item7"];
+
+int finAmt=0;
+
+setFinAmt(int amt){
+  finAmt=amt;
+  update();
+}
+
+int crtAmt=0;
+calAmt(){
+  crtAmt=0;
+  finAmt=0;
+  for(int i=0;i<cartList.length;i++){
+    crtAmt=crtAmt+cartList[i].price;
+  }
+  finAmt=crtAmt+100;
+
+  update();
+}
+
 
 }

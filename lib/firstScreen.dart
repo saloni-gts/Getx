@@ -120,10 +120,16 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:getx/sofapage.dart';
 
 import 'allItem.dart';
+import 'bedpage.dart';
 import 'cartPage.dart';
 import 'chair.dart';
+import 'getController.dart';
+import 'tablePage.dart';
 
 
 class DashBoardMain extends StatefulWidget {
@@ -142,13 +148,16 @@ class _DashBoardMainState extends State<DashBoardMain> with TickerProviderStateM
   final List<Widget> mainScreens = [
     AllItems(),
     ChairPage(),
+    TablePage(),
+    BedPage(),
+    SofaPage(),
     CartPage()
   ];
-
+  MyHomePageController controller = Get.put(MyHomePageController());
   @override
   void initState() {
 
-
+    // tabController.animateTo(1);
     print("call init state");
     // if (widget.type == 2) {
     //   Navigator.push(GlobalVariable.navState.currentContext!,
@@ -160,7 +169,7 @@ class _DashBoardMainState extends State<DashBoardMain> with TickerProviderStateM
 
 
     super.initState();
-    tabController = TabController(initialIndex: 0, length: 3, vsync: this);
+    tabController = TabController(initialIndex: 0, length: 6, vsync: this);
 
   }
 
@@ -199,6 +208,7 @@ class _DashBoardMainState extends State<DashBoardMain> with TickerProviderStateM
         ),
       // ),
       bottomNavigationBar: Material(
+
         // color: Colors.transparent,
         color: Color(0xFF035AA6),
         elevation: 0,
@@ -213,11 +223,9 @@ class _DashBoardMainState extends State<DashBoardMain> with TickerProviderStateM
               bottomLeft: Radius.circular(40),
             ),
             child: BottomAppBar(
-
-
-
+              height: 65,
               // color: Colors.redAccent,
-              notchMargin: 5,
+              notchMargin: 3,
               //shape: CircularNotchedRectangle(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -228,11 +236,60 @@ class _DashBoardMainState extends State<DashBoardMain> with TickerProviderStateM
                         text: "Home"
                     ),
                     Tab(
-                      icon: Icon(Icons.chair),
+                      icon: Icon(Icons.chair_alt_outlined),
                       text: "Chairs",
                     ),
                     Tab(
-                      icon:Icon(Icons.shopping_cart),
+                      icon: Icon(Icons.table_restaurant_rounded),
+                      text: "Tables",
+                    ),
+                    Tab(
+                      icon: Icon(Icons.bed),
+                      text: "Beds",
+                    ),
+                    Tab(
+                      icon: Icon(Icons.chair),
+                      text: "Sofas",
+                    ),
+
+
+
+                    Tab(
+                      icon:Stack(
+                        children: [
+                          Icon(Icons.shopping_cart,size: 25),
+// GetBuilder<MyHomePageController>(
+//   builder: (controller) {
+//     return Positioned(
+//       left: 10,
+//       bottom: 10,
+//       child: Container(
+//         height: 13,
+//         width: 13,
+//         decoration: BoxDecoration(
+//           shape: BoxShape.circle,
+//           border: Border.all(
+//             color: Colors.white,
+//           ),
+//           color: Colors.redAccent,
+//         ),
+//         child: Center(
+//           child: Container(
+//             child: Text(
+//             controller.cartList.length.toString(),
+//               style: TextStyle(
+//                 color: Colors.white
+//               ),
+//             ),
+//           ),
+//         )
+//
+//       ),
+//     );
+//   }
+// )
+                        ],
+                      ),
                       text: "Cart",
                     ),
                   ],
